@@ -1,0 +1,46 @@
+package per.fxt.auth.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import per.fxt.auth.mapper.IPermissionMapper;
+import per.fxt.auth.mapper.IUserMapper;
+import per.fxt.common.entity.Permission;
+import per.fxt.common.entity.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Fangxiaoting
+ * @date 2021/7/12 17:55
+ */
+public class UserServiceImpl implements UserDetailsService {
+
+    @Autowired
+    private IUserMapper userMapper;
+
+    @Autowired
+    private IPermissionMapper permissionMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userMapper.findByUserName(username);
+        if (user != null) {
+            List<Permission> permissions = permissionMapper.findByAdminUserId(user.getId());
+            List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+            for (Permission permission : permissions) {
+                if (permission != null && permission.getName() != null) {
+                    GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(permission.getName());
+                    grantedAuthorities.add(grantedAuthority);
+                }
+            }
+            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+        } else {
+            throw new UsernameNotFoundException("admin: " + username + " do not exist!");
+        }
+    }
+}
