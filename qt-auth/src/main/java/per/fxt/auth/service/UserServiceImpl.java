@@ -6,8 +6,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import per.fxt.auth.mapper.IPermissionMapper;
 import per.fxt.auth.mapper.IUserMapper;
+import per.fxt.auth.mapper.IPermissionMapper;
 import per.fxt.common.entity.Permission;
 import per.fxt.common.entity.User;
 

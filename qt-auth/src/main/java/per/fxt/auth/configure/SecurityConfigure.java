@@ -3,14 +3,17 @@ package per.fxt.auth.configure;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * @author Fangxiaoting
  * @date 2021/7/12 17:29
  */
-@Order(2)
 @EnableWebSecurity
 public class SecurityConfigure extends WebSecurityConfigurerAdapter {
 
@@ -20,26 +23,22 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
-    /*@Override
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
-                .requestMatchers()
-                .antMatchers(EndpointConstant.OAUTH_ALL, EndpointConstant.LOGIN)
-                .and()
-                .authorizeRequests()
-                .antMatchers(EndpointConstant.OAUTH_ALL).authenticated()
-                .and()
-                .formLogin()
-                .loginPage(EndpointConstant.LOGIN)
-                .loginProcessingUrl(EndpointConstant.LOGIN)
-                .successHandler(successHandler)
-                .failureHandler(failureHandler)
-                .permitAll()
-                .and().csrf().disable()
-
-                .httpBasic().disable();
-    }*/
+        http
+                // 配置允许访问的链接
+                .authorizeRequests().antMatchers("/oauth/**", "/login/**", "/logout/**","/api/**").permitAll()
+                // 其余所有请求全部需要鉴权认证
+                .anyRequest().authenticated()
+                // 关闭跨域保护;
+                .and().csrf().disable();
+    }
 
 }

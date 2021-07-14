@@ -19,6 +19,7 @@
     <modules>
         <module>../qt-common</module>
         <module>../qt-auth</module>
+        <module>../qt-order</module>
     </modules>
 
     <properties>

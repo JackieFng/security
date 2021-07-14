@@ -8,10 +8,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>per.fxt</groupId>
-    <artifactId>qt-auth</artifactId>
+    <artifactId>qt-order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>qt-auth</name>
-    <description>认证授权服务</description>
+    <name>qt-order</name>
+    <description>资源服务</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>

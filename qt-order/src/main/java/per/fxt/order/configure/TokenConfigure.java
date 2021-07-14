@@ -1,4 +1,4 @@
-package per.fxt.auth.configure;
+package per.fxt.order.configure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
