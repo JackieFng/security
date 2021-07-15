@@ -6,6 +6,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.stereotype.Service;
 import per.fxt.auth.mapper.IUserMapper;
 import per.fxt.auth.mapper.IPermissionMapper;
 import per.fxt.common.entity.Permission;
@@ -18,6 +20,7 @@ import java.util.List;
  * @author Fangxiaoting
  * @date 2021/7/12 17:55
  */
+@Service
 public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
@@ -43,4 +46,5 @@ public class UserServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("admin: " + username + " do not exist!");
         }
     }
+
 }

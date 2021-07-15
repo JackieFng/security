@@ -1,4 +1,4 @@
-package per.fxt.auth;
+package per.fxt.order;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
