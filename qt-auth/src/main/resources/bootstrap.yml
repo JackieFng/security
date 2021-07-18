@@ -3,29 +3,25 @@ server:
 spring:
   application:
     name: Auth
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/security?characterEncoding=utf-8
-    username: root
-    password: 123456
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
-    serialization:
-      write-dates-as-timestamps: false
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        #group: DEV_GROUP #可以和spring.profiles.active配合使用，也可以不指定spring.profiles.active
+        #namespace: 225c270e-6d81-48bb-9280-d99ee8b4b202
+      discovery:
+        server-addr: 127.0.0.1:8848
+  profiles:
+    active: dev
   main:
-    allow-bean-definition-overriding: true
+    allow-bean-definition-overriding: true #此行配置如果配置在nacos上会不生效，和加载顺序有关
+#dataId组成：spring.application.name+"-"+spring.profiles.active+".yaml"
+#通过命名不同dataId来获取不同环境的配置文件，比如：Auth-dev.yaml和Auth-test.yaml两个文件就可以
+#指定spring.profiles.active来获取指定环境的配置文件
 
-mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
-    auto-mapping-behavior: full
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath*:mapper/**/*Mapper.xml
-  global-config:
-    # 逻辑删除配置
-    db-config:
-      # 删除前
-      logic-not-delete-value: 1
-      # 删除后
-      logic-delete-value: 0
+#默认分组位DEFAULT_GROUP,可以通过建立不同的分组来获取不同环境的配置文件。比如DEV_GROUP和TEST_GROUP，然后在配置文件中指定group
+
+#namespacem命令空间，可以通过新建不同的命令空间来区分不同的配置环境，每个新建的命令空间会自动生成一个id,然后在配置文件中指定namespace的id
+#所以综上所述，可以通过amespacem,group,dataid三个属性结合使用或者单独使用来获取指定环境配置文件
+

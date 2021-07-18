@@ -38,7 +38,8 @@ public class ResourceServerConfigure extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.resourceId(RESOURCE_ID)
-                .tokenServices(tokenServices())
+                /*.tokenServices(tokenServices())*/
+                .tokenStore(tokenStore)//资源服务通过jwt对称加密的形式验证令牌
                 .stateless(true);
     }
 
