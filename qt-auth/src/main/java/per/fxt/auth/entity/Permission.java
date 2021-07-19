@@ -1,4 +1,4 @@
-package per.fxt.common.entity;
+package per.fxt.auth.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

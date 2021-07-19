@@ -6,12 +6,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import per.fxt.auth.mapper.IUserMapper;
 import per.fxt.auth.mapper.IPermissionMapper;
-import per.fxt.common.entity.Permission;
-import per.fxt.common.entity.User;
+import per.fxt.auth.entity.Permission;
+import per.fxt.auth.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;

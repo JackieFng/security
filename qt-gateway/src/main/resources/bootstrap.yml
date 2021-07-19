@@ -1,0 +1,47 @@
+server:
+  port: 8012
+
+spring:
+  application:
+    name: Gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+      discovery:
+        server-addr: 127.0.0.1:8848
+#    gateway:
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowedOrigins: "*"
+#            allowedMethods: "*"
+#            allowedHeaders: "*"
+#            allowCredentials: true
+  #    gateway:
+#      discovery:
+#        locator:
+#          enabled: true #开启从nacos动态创建路由的功能，利用为服务名进行动态路由
+#      routes:
+#        - id: Order #路由id,唯一即可
+##          uri: http://localhost:8011 匹配提供服务的地址,指定提供服务的地址，不做负载均衡
+#          uri: lb://Order
+#          predicates:
+#            - Path=/order/** # 断言配置，路径相匹配的进行路哟
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true #此行配置如果配置在nacos上会不生效，和加载顺序有关
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    org:
+      springframework: info
+

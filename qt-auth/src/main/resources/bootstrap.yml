@@ -16,6 +16,12 @@ spring:
     active: dev
   main:
     allow-bean-definition-overriding: true #此行配置如果配置在nacos上会不生效，和加载顺序有关
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 #dataId组成：spring.application.name+"-"+spring.profiles.active+".yaml"
 #通过命名不同dataId来获取不同环境的配置文件，比如：Auth-dev.yaml和Auth-test.yaml两个文件就可以
 #指定spring.profiles.active来获取指定环境的配置文件
@@ -25,3 +31,7 @@ spring:
 #namespacem命令空间，可以通过新建不同的命令空间来区分不同的配置环境，每个新建的命令空间会自动生成一个id,然后在配置文件中指定namespace的id
 #所以综上所述，可以通过amespacem,group,dataid三个属性结合使用或者单独使用来获取指定环境配置文件
 
+logging:
+  level:
+    org:
+      springframework: info

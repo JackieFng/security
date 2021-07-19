@@ -1,5 +1,6 @@
 server:
   port: 8011
+
 spring:
   application:
     name: Order
@@ -11,7 +12,18 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
   profiles:
-    active: test
+    active: dev
   main:
     allow-bean-definition-overriding: true #此行配置如果配置在nacos上会不生效，和加载顺序有关
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    org:
+      springframework: info
 

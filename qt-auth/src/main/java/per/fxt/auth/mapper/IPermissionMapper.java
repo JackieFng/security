@@ -1,9 +1,8 @@
 package per.fxt.auth.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.springframework.stereotype.Repository;
-import per.fxt.common.entity.Permission;
 import org.apache.ibatis.annotations.Param;
+import per.fxt.auth.entity.Permission;
 
 import java.util.List;
 
