@@ -35,7 +35,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 // 配置允许访问的链接
-                .authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
+                .authorizeRequests().antMatchers("/oauth/**").permitAll()
                 // 其余所有请求全部需要鉴权认证
                 .anyRequest().authenticated()
                 //加上httBasic提交

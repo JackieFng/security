@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 public class TokenConfigure {
 
-    private String SIGNING_KEY = "qt123";
+    private String SIGNING_KEY = "123";
 
     @Bean
     public TokenStore tokenStore() {

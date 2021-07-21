@@ -30,6 +30,9 @@
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
         <mysql.version>8.0.16</mysql.version>
         <druid.version>1.1.10</druid.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <java-jwt.version>3.10.0</java-jwt.version>
+        <fastjson.version>1.2.58</fastjson.version>
     </properties>
 
     <dependencyManagement>
@@ -54,6 +57,16 @@
                 <version>${druid.version}</version>
             </dependency>
             <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${java-jwt.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
@@ -62,6 +75,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

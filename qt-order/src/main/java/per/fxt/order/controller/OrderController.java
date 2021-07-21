@@ -1,6 +1,8 @@
 package per.fxt.order.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ public class OrderController {
     @GetMapping("index")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String index() {
-        return "hello world";
+        OAuth2Authentication oAuth2Authentication = (OAuth2Authentication)SecurityContextHolder.getContext().getAuthentication();
+        return "hello" + oAuth2Authentication.getUserAuthentication().getPrincipal() + "!";
     }
 }
