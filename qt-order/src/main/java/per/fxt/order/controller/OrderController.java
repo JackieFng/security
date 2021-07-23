@@ -19,6 +19,6 @@ public class OrderController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String index() {
         OAuth2Authentication oAuth2Authentication = (OAuth2Authentication)SecurityContextHolder.getContext().getAuthentication();
-        return "hello" + oAuth2Authentication.getUserAuthentication().getPrincipal() + "!";
+        return "hello " + oAuth2Authentication.getUserAuthentication().getPrincipal() + "!";
     }
 }

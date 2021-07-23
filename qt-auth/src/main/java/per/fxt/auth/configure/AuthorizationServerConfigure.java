@@ -116,7 +116,7 @@ public class AuthorizationServerConfigure extends AuthorizationServerConfigurerA
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager)//认证管理器
+        endpoints.authenticationManager(authenticationManager)//认证管理器,密码模式和授权码模式必须要配置
                 .authorizationCodeServices(authorizationCodeServices())//授权码服务
                 .tokenServices(tokenServices())//令牌管理服务
                 .allowedTokenEndpointRequestMethods(HttpMethod.POST);

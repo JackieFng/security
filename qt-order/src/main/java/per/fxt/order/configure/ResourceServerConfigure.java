@@ -20,6 +20,9 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 @EnableResourceServer
 public class ResourceServerConfigure extends ResourceServerConfigurerAdapter {
 
+    /**
+     * 这个资源id代表着访问该资源的客户端必须要拥有该资源id的权限，即表里面的对应的资源id字段要拥有该值，否则无法访问该资源
+     */
     private static final String RESOURCE_ID = "res1";
 
     @Autowired
@@ -39,14 +42,14 @@ public class ResourceServerConfigure extends ResourceServerConfigurerAdapter {
                 .stateless(true);
     }
 
-    @Bean
+    /*@Bean
     public ResourceServerTokenServices tokenServices() {
         RemoteTokenServices remoteTokenService = new RemoteTokenServices();
         remoteTokenService.setCheckTokenEndpointUrl("http://localhost:8010/oauth/check_token");
         remoteTokenService.setClientId("qt");
         remoteTokenService.setClientSecret("123");
         return remoteTokenService;
-    }
+    }*/
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
