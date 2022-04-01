@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 
 /**
- * @author admin
+ * @author JackieFng
  */
 @Configuration
 @EnableAuthorizationServer

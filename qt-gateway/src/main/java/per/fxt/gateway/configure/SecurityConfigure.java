@@ -11,7 +11,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import reactor.core.publisher.Mono;
 
 /**
- * @author MrBird
+ * @author JackieFng
  */
 @Configuration
 @EnableWebFluxSecurity

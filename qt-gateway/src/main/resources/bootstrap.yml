@@ -28,7 +28,7 @@ spring:
 ##          uri: http://localhost:8011 匹配提供服务的地址,指定提供服务的地址，不做负载均衡
 #          uri: lb://Order
 #          predicates:
-#            - Path=/order/** # 断言配置，路径相匹配的进行路哟
+#            - Path=/order/** # 断言配置，路径相匹配的进行路由
   profiles:
     active: dev
   main:
